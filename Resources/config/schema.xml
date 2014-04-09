@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database name="default" defaultIdMethod="native" package="src"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://xsd.propelorm.org/1.6/database.xsd">
+    <behavior name="query_cache" />
+    <behavior name="alternative_coding_standards">
+        <parameter name="brackets_newline" value="true" />
+        <parameter name="remove_closing_comments" value="true" />
+        <parameter name="use_whitespace" value="true" />
+        <parameter name="tab_size" value="4" />
+        <parameter name="strip_comments" value="false" />
+    </behavior>
+    
+    <table name="c33s_simple_content_page" phpName="ContentPage" namespace="c33s\SimpleContentBundle\Model">
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        
+        <!--    
+        <behavior name="c33s_searchable">
+            <parameter name="columns" value="title,name,content" />
+        </behavior>
+        -->
+        <behavior name="nested_set" />
+        
+        <column name="title" primaryString="true" required="true" />
+        <column name="name"  required="false" />
+        <column name="content" type="LONGVARCHAR" required="false" />
+        <column name="is_published" type="BOOLEAN" default="true" required="false" />
+        
+        <unique>
+            <unique-column name="name" />
+        </unique>
+    </table>
+    
+</database>

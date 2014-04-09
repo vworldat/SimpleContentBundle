@@ -1,0 +1,4 @@
+c33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentPage:
+    resource: "@c33sSimpleContentBundle/Controller/ContentPage/"
+    type:     admingenerator_nested
+    prefix:   /content_pages

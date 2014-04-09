@@ -1,0 +1,72 @@
+generator: admingenerator.generator.propel
+params:
+    model: c33s\SimpleContentBundle\Model\ContentPage
+    namespace_prefix: c33s
+    concurrency_lock: ~
+    bundle_name: SimpleContentBundle
+    pk_requirement: ~
+    fields: []
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    nested_list:
+        params:
+            title: Content pages
+            display:
+              - id
+              - name
+              - title
+#               enable those for debugging purposes
+#              - tree_left
+#              - tree_right
+#              - tree_level
+              - is_published
+              - updated_at
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    filters:
+        params:
+            display:
+              - is_published
+    new:
+        params:
+            title: Add content page
+            display:
+              - name
+              - title
+              - content
+              - is_published
+            actions:
+                save-and-list: ~
+                list: ~
+    edit:
+        params:
+            #title: "You're editing the object \"%title%\"|{ %title%: content_page.title }|"
+            title:  "Edit content page"
+            display:
+              - name
+              - title
+              - content
+              - is_published
+            actions:
+                save-and-list: ~
+                list: ~
+    show:
+        params:
+            #title: "You're viewing the object \"%object%\"|{ %object%: content_page.title }|"
+            title:  "Content page details"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

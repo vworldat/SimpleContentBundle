@@ -1,0 +1,4 @@
+c33s_simple_content_show:
+    pattern:  /{name}
+    defaults: { _controller: c33sSimpleContentBundle:SimpleContent:show }
+        

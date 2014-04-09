@@ -1,0 +1,6 @@
+c33s_simple_content_show:
+    pattern:  /{name}
+    defaults: { _controller: c33sSimpleContentBundle:SimpleContent:show }
+    requirements:
+        name:  ([A-Za-z0-9_-]*|)
+        

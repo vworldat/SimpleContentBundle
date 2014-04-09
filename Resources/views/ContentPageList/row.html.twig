@@ -1,0 +1,15 @@
+{% extends_admingenerated "c33sSimpleContentBundle:ContentPageList:row.html.twig" %}
+
+{# the root row can be hidden using css #}
+
+{% block object_action_edit %}
+    {% if not ContentPage.isRoot  %}
+        {{ parent() }}
+    {% endif %}
+{% endblock object_action_edit %}
+
+{% block object_action_delete %}
+    {% if not ContentPage.isRoot  %}
+        {{ parent() }}
+    {% endif %}
+{% endblock object_action_delete %}
