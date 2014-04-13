@@ -32,4 +32,25 @@
         </unique>
     </table>
     
+    <table name="c33s_simple_content_type" phpName="ContentType" namespace="c33s\SimpleContentBundle\Model">
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable" />
+        
+        <column name="title" primaryString="true" required="true" />
+        <column name="template_name" required="true" />
+    </table>
+    
+    <table name="c33s_simple_content_page_type_page" phpName="ContentPageType" namespace="c33s\SimpleContentBundle\Model">
+        <column name="content_page_id" type="INTEGER" primaryKey="true" />
+        <column name="content_type_id" type="INTEGER" primaryKey="true" />
+        
+        <foreign-key foreignTable="c33s_simple_content_page">
+            <reference local="content_page_id" foreign="id"/>
+        </foreign-key>
+        <foreign-key foreignTable="c33s_simple_content_type">
+            <reference local="content_type_id" foreign="id"/>
+        </foreign-key>
+    </table>
+    
 </database>
