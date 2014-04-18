@@ -6,8 +6,7 @@ use c33s\MenuBundle\Exception\OptionRequiredException;
 use c33s\MenuBundle\Item\MenuItem;
 use c33s\MenuBundle\Menu\Menu;
 use c33s\SimpleContentBundle\Model\ContentPage;
-use c33s\SimpleContentBundle\Model\ContentPageQuery;
-use Criteria;
+use c33s\SimpleContentBundle\Service\SimpleContentService;
 
 /**
  * Description of SimpleContentMenuItem
@@ -45,36 +44,30 @@ class SimpleContentMenuItem extends MenuItem
             throw new OptionRequiredException('SimpleContentMenuItem requires routeName/pageName notation');
         }
         
-        list($routeName, $pageName) = explode('/', $routeName, 2);
-        
-        $this->loadContentPage($pageName);
+        list($routeName, $this->simplePageName) = explode('/', $routeName, 2);
         
         parent::__construct($routeName, $options, $menu);
     }
     
     /**
+     * Initialize the item's option values.
+     */
+    protected function initOptions()
+    {
+        $this->fetchContentPage();
+        
+        parent::initOptions();
+    }
+    
+    /**
      * @param string $pageName
      */
-    protected function loadContentPage($pageName)
+    protected function fetchContentPage()
     {
-        $pageName = (string) $pageName;
+        $contentService = $this->container->get('c33s_simple_content');
+        /* @var $contentService SimpleContentService */
         
-        $this->simplePageName = $pageName;
-        
-        if ('' == $pageName)
-        {
-            $this->simpleContentPage = ContentPageQuery::create()
-                ->filterByName(null, Criteria::ISNULL)
-                ->findOne()
-            ;
-        }
-        else
-        {
-            $this->simpleContentPage = ContentPageQuery::create()
-                ->filterByName($pageName)
-                ->findOne()
-            ;
-        }
+        $this->simpleContentPage = $contentService->fetchPage($this->simplePageName);
     }
     
     /**

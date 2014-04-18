@@ -53,6 +53,7 @@ class SimpleContentMenu extends Menu
     {
         $data = array(
             'item_class' => $this->getDefaultItemClass(),
+            'visible_if_disabled' => false,
             'children' => array()
         );
         

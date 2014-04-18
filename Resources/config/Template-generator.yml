@@ -1,0 +1,61 @@
+generator: admingenerator.generator.propel
+params:
+    model: c33s\SimpleContentBundle\Model\Template
+    namespace_prefix: c33s
+    concurrency_lock: ~
+    bundle_name: SimpleContentBundle
+    pk_requirement: ~
+    fields:
+        content_pages:
+            formType:   model
+            addFormOptions:
+                multiple:   true
+                expanded:   true
+                
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Templates
+            display:
+              - id
+              - title
+              - template_name
+              - updated_at
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    filters:
+        params:
+            display: []
+    new:
+        params:
+            title: Add template
+            display:
+              - title
+              - template_name
+              - content_pages
+            actions:
+                save-and-list: ~
+                list: ~
+    edit:
+        params:
+            title: Edit template
+            display:
+              - title
+              - template_name
+              - content_pages
+            actions:
+                save-and-list: ~
+                list: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

@@ -2,7 +2,7 @@
 
 namespace c33s\SimpleContentBundle\Controller;
 
-use c33s\SimpleContentBundle\Service\ContentService;
+use c33s\SimpleContentBundle\Service\SimpleContentService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SimpleContentController extends Controller
@@ -15,19 +15,20 @@ class SimpleContentController extends Controller
      */
     public function showAction($name = null)
     {
-        /* @var $contentService ContentService */
         $contentService = $this->get('c33s_simple_content');
+        /* @var $contentService SimpleContentService */
         
         $contentPage = $contentService->fetchPage($name);
         
         if (null === $contentPage)
         {
-            $this->createNotFoundException();
+            return $this->createNotFoundException();
         }
         
-        return $this->render($contentService->getContentTemplate(), array(
+        return $this->render('c33sSimpleContentBundle::show.html.twig', array(
             'contentPage' => $contentPage, 
-            'baseTemplate' => $contentService->getBaseTemplate(),
+            'baseTemplate' => $contentService->getTemplateForPage($contentPage),
+            'rendererTemplate' => $contentService->getRendererTemplateForPage($contentPage),
         ));
     }
 }

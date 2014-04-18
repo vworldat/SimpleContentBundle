@@ -8,11 +8,11 @@ use Criteria;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Description of ContentService
+ * Description of SimpleContentService
  *
  * @author david
  */
-class ContentService
+class SimpleContentService
 {
     /**
      *
@@ -24,13 +24,13 @@ class ContentService
      *
      * @var string
      */
-    protected $baseTemplate;
+    protected $defaultTemplate;
     
     /**
      *
      * @var string
      */
-    protected $contentTemplate;
+    protected $defaultRendererTemplate;
     
     /**
      *
@@ -38,10 +38,10 @@ class ContentService
      */
     protected $pages = array();
     
-    public function __construct($baseTemplate, $contentTemplate, ContainerInterface $container)
+    public function __construct($defaultTemplate, $defaultRendererTemplate, ContainerInterface $container)
     {
-        $this->baseTemplate = $baseTemplate;
-        $this->contentTemplate = $contentTemplate;
+        $this->defaultTemplate = $defaultTemplate;
+        $this->defaultRendererTemplate = $defaultRendererTemplate;
         $this->container = $container;
     }
     
@@ -50,9 +50,14 @@ class ContentService
      * 
      * @return string
      */
-    public function getContentTemplate()
+    public function getRendererTemplateForPage(ContentPage $contentPage)
     {
-        return $this->contentTemplate;
+        if (null !== $contentPage->getContentTypeId())
+        {
+            return $contentPage->getContentType()->getTemplateName();
+        }
+        
+        return $this->defaultRendererTemplate;
     }
     
     /**
@@ -60,9 +65,14 @@ class ContentService
      * 
      * @return string
      */
-    public function getBaseTemplate()
+    public function getTemplateForPage(ContentPage $contentPage)
     {
-        return $this->baseTemplate;
+        if (null !== $contentPage->getTemplateId())
+        {
+            return $contentPage->getTemplate()->getTemplateName();
+        }
+        
+        return $this->defaultTemplate;
     }
     
     /**
@@ -81,13 +91,17 @@ class ContentService
             if ('' == $pageName)
             {
                 $page = ContentPageQuery::create()
+                    ->filterByIsPublished(true)
                     ->filterByName(null, Criteria::ISNULL)
+                    ->_or()
+                    ->filterByName('')
                     ->findOne()
                 ;
             }
             else
             {
                 $page = ContentPageQuery::create()
+                    ->filterByIsPublished(true)
                     ->filterByName($pageName)
                     ->findOne()
                 ;

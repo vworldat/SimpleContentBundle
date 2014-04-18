@@ -1,0 +1,73 @@
+# You can copy any of those fixtures to your /app/propel/fixtures/ folder,
+# they will work out of the box
+
+# If you need more than one content type in your application (see option "default_renderer_template"),
+# you may specify several of them and choose by page
+c33s\SimpleContentBundle\Model\ContentType:
+    markdown:
+        title:          Markdown
+        template_name:  c33sSimpleContentBundle:Renderer:markdown.html.twig
+    html:
+        title:          HTML
+        template_name:  c33sSimpleContentBundle:Renderer:html.html.twig
+    plain_text:
+        title:          Plain text
+        template_name:  c33sSimpleContentBundle:Renderer:plain_text.html.twig
+
+# Defining your custom content type is just as easy:
+    my_custom_type:
+        title:          My custom renderer name
+        template_name:  myRenderer:template:name.html.twig
+
+
+# If you want to use more than one base template (see option "default_base_template"), you may specify them like this:
+c33s\SimpleContentBundle\Model\Template:
+    my_base_template1:
+        title:          Base Template 1
+        template_name:  pathTo::my-base-template.html.twig
+        
+    my_base_template2:
+        title:          Base Template 2
+        template_name:  pathTo::my-other-base-template.html.twig
+
+
+# content fixtures can be defined like this
+c33s\SimpleContentBundle\Model\ContentPage:
+    # The first element you save will automatically become the root element and will not be editable.
+    # It is recommended to create a dummy page like this:
+    root:
+        title:              root element do not edit!
+        name:               root element do not edit!
+        is_published:       false
+        content:            ''
+    
+    # This is how a page might look
+    page1:
+        # The page's title is the only required option
+        title:              Page title
+        
+        # The name will act as access path, like http://example.com/{name}
+        # You may leave it empty to have an actual home page
+        name:               path_to_page
+        
+        # YAML supports an easy to use syntax for text with line breaks
+        content:            |
+            What about using block YAML syntax like this?
+            
+            This works great!
+        
+        # By default all pages have a published flag. You may disabled it like this:
+        is_published:       false
+        
+        # Using various base templates? Specify like this:
+        template_id:        my_base_template1
+        
+        # Using various content types? Specify like this:
+        content_type_id:    my_custom_type
+        
+        # The pages are managed using a nested set tree. If you know what you are doing, you may 
+        # define the tree values. Be careful, this can completely break your content tree!
+        tree_left:  x
+        tree_right: y
+        tree_level: z
+        

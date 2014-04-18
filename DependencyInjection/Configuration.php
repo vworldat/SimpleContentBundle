@@ -22,13 +22,12 @@ class Configuration implements ConfigurationInterface
         
         $rootNode
             ->children()
-                ->scalarNode('base_template')
-                    ->defaultValue('')
-                    ->info('Base template to extend inside the content_template')
+                ->scalarNode('default_base_template')
+                    ->info('Base template to extend')
                 ->end()
-                ->scalarNode('content_template')
-                    ->defaultValue('c33sSimpleContentBundle:Content:show.html.twig')
-                    ->info('Template to use for displaying content')
+                ->scalarNode('default_renderer_template')
+                    ->defaultValue('c33sSimpleContentBundle:Renderer:markdown.html.twig')
+                    ->info('Template to use for rendering/filtering content')
                 ->end()
             ->end()
         ;

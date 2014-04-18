@@ -5,13 +5,13 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     
     <parameters>
-        <parameter key="c33s_simple_content.class">c33s\SimpleContentBundle\Service\ContentService</parameter>
+        <parameter key="c33s_simple_content.class">c33s\SimpleContentBundle\Service\SimpleContentService</parameter>
     </parameters>
     
     <services>
         <service id="c33s_simple_content" class="%c33s_simple_content.class%">
-            <argument>%c33s_simple_content.base_template%</argument>
-            <argument>%c33s_simple_content.content_template%</argument>
+            <argument>%c33s_simple_content.default_base_template%</argument>
+            <argument>%c33s_simple_content.default_renderer_template%</argument>
             <argument type="service" id="service_container" />
         </service>
     </services>

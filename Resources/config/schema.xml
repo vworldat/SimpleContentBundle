@@ -22,6 +22,9 @@
         -->
         <behavior name="nested_set" />
         
+        <column name="template_id" type="INTEGER" required="false" />
+        <column name="content_type_id" type="INTEGER" required="false" />
+        
         <column name="title" primaryString="true" required="true" />
         <column name="name"  required="false" />
         <column name="content" type="LONGVARCHAR" required="false" />
@@ -30,6 +33,12 @@
         <unique>
             <unique-column name="name" />
         </unique>
+        <foreign-key foreignTable="c33s_simple_template" onDelete="SETNULL">
+            <reference local="template_id" foreign="id" />
+        </foreign-key>
+        <foreign-key foreignTable="c33s_simple_content_type">
+            <reference local="content_type_id" foreign="id"/>
+        </foreign-key>
     </table>
     
     <table name="c33s_simple_content_type" phpName="ContentType" namespace="c33s\SimpleContentBundle\Model">
@@ -41,16 +50,12 @@
         <column name="template_name" required="true" />
     </table>
     
-    <table name="c33s_simple_content_page_type_page" phpName="ContentPageType" namespace="c33s\SimpleContentBundle\Model">
-        <column name="content_page_id" type="INTEGER" primaryKey="true" />
-        <column name="content_type_id" type="INTEGER" primaryKey="true" />
+    <table name="c33s_simple_template" phpName="Template" namespace="c33s\SimpleContentBundle\Model">
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="sluggable" />
         
-        <foreign-key foreignTable="c33s_simple_content_page">
-            <reference local="content_page_id" foreign="id"/>
-        </foreign-key>
-        <foreign-key foreignTable="c33s_simple_content_type">
-            <reference local="content_type_id" foreign="id"/>
-        </foreign-key>
+        <column name="title" primaryString="true" required="true" />
+        <column name="template_name" required="true" />
     </table>
-    
 </database>
