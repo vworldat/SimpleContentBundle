@@ -23,9 +23,11 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
-        "c33s/menu-bundle": "*",
-        "knplabs/knp-markdown-bundle": ">=1.2.0",
         "propel/propel-bundle": ">=1.2.0",
         "cedriclombardot/admingenerator-generator-bundle": "*"
+    },
+    "suggest": {
+        "c33s/menu-bundle": ">=0.9.*",
+        "knplabs/knp-markdown-bundle": ">=1.3.0"
     }
 }
