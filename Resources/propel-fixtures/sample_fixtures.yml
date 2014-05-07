@@ -4,6 +4,7 @@
 # If you need more than one content type in your application (see option "default_renderer_template"),
 # you may specify several of them and choose by page
 c33s\SimpleContentBundle\Model\ContentType:
+    # These 3 types are implemented by default
     markdown:
         title:          Markdown
         template_name:  c33sSimpleContentBundle:Renderer:markdown.html.twig
@@ -13,9 +14,9 @@ c33s\SimpleContentBundle\Model\ContentType:
     plain_text:
         title:          Plain text
         template_name:  c33sSimpleContentBundle:Renderer:plain_text.html.twig
-
-# Defining your custom content type is just as easy:
+        
     my_custom_type:
+        # Defining your custom content type is just as easy:
         title:          My custom renderer name
         template_name:  myRenderer:template:name.html.twig
 

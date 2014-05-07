@@ -25,7 +25,7 @@ class SimpleContentMenuItem extends MenuItem
     /**
      * Construct a new menu item. It requires its routeName, options and
      * the menu the item is assigned to.
-     * 
+     *
      * SimpleContentMenuItem requires the following routeName notation:
      * routeName/pageName
      *
@@ -57,6 +57,8 @@ class SimpleContentMenuItem extends MenuItem
         $this->fetchContentPage();
         
         parent::initOptions();
+        
+        $this->matchRequestVariables['name'] = $this->simplePageName;
     }
     
     /**
@@ -108,22 +110,20 @@ class SimpleContentMenuItem extends MenuItem
         return null !== $this->simpleContentPage && parent::isEnabled();
     }
     
-    public function isCurrentEndPoint()
-    {
-        return parent::isCurrentEndPoint() && $this->getRequest()->get('name') == $this->simplePageName;
-    }
-    
     /**
-     * Generate a URL using the routing.
+     * Add variable values defined in $addRequestVariables to the given
+     * urlParameters. This can be used to pass through generally available
+     * request parameters.
      *
      * @param array $urlParameters
      *
-     * @return string
+     * @return array
      */
-    protected function generateStandardUrl(array $urlParameters = array(), $absolute = false)
+    protected function addRequestVariablesToUrlParameters(array $urlParameters)
     {
+        $urlParameters = parent::addRequestVariablesToUrlParameters($urlParameters);
         $urlParameters['name'] = $this->simplePageName;
-        
-        return parent::generateStandardUrl($urlParameters, $absolute);
+                
+        return $urlParameters;
     }
 }
