@@ -123,7 +123,7 @@ class SimpleContentMenuItem extends MenuItem
     {
         $urlParameters = parent::addRequestVariablesToUrlParameters($urlParameters);
         $urlParameters['name'] = $this->simplePageName;
-                
+        
         return $urlParameters;
     }
 }

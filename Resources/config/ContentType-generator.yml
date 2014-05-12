@@ -4,6 +4,7 @@ params:
     namespace_prefix: c33s
     concurrency_lock: ~
     bundle_name: SimpleContentBundle
+    i18n_catalog:   C33sSimpleContent
     pk_requirement: ~
     fields:
         content_pages:

@@ -15,21 +15,16 @@ use PropelCollection;
 class SimpleContentMenu extends Menu
 {
     /**
-     * @see Menu::mergeItemDefaults()
-     * 
-     * @param array $itemData
-     * @return array
+     * This is executed before initialize(). Put awesome stuff here.
      */
-    protected function mergeItemDefaults(array $itemData)
+    protected function configure()
     {
-        $itemData = $this->addContentItems($itemData);
-        
-        return parent::mergeItemDefaults($itemData);
+        $this->addContentItems();
     }
     
     /**
      * Get the default class name to use for first-level items.
-     * 
+     *
      * @return string
      */
     protected function getDefaultItemClass()
@@ -37,23 +32,20 @@ class SimpleContentMenu extends Menu
         return 'c33s\SimpleContentBundle\Menu\SimpleContentMenuItem';
     }
     
-    protected function addContentItems(array $itemData)
+    protected function addContentItems()
     {
         foreach ($this->getContentPages() as $page)
         {
             $key = 'c33s_simple_content_show/'.$page->getName();
             
-            $itemData[$key] = $this->generateContentChild($page);
+            $this->itemData[$key] = $this->generateContentChild($page);
         }
-        
-        return $itemData;
     }
     
     protected function generateContentChild(ContentPage $parent)
     {
         $data = array(
             'item_class' => $this->getDefaultItemClass(),
-            'visible_if_disabled' => false,
             'children' => array()
         );
         
@@ -68,7 +60,7 @@ class SimpleContentMenu extends Menu
     }
     
     /**
-     * 
+     *
      * @return PropelCollection
      */
     protected function getContentPages()
