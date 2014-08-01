@@ -25,7 +25,7 @@ class SimpleContentController extends Controller
             return $this->createNotFoundException();
         }
         
-        return $this->render('c33sSimpleContentBundle::show.html.twig', array(
+        return $this->render('C33sSimpleContentBundle::show.html.twig', array(
             'contentPage' => $contentPage, 
             'baseTemplate' => $contentService->getTemplateForPage($contentPage),
             'rendererTemplate' => $contentService->getRendererTemplateForPage($contentPage),

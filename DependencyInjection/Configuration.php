@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
                     ->info('Base template to extend')
                 ->end()
                 ->scalarNode('default_renderer_template')
-                    ->defaultValue('c33sSimpleContentBundle:Renderer:markdown.html.twig')
+                    ->defaultValue('C33sSimpleContentBundle:Renderer:markdown.html.twig')
                     ->info('Template to use for rendering/filtering content')
                 ->end()
             ->end()

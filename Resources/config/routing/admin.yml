@@ -1,14 +1,14 @@
-c33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentPage:
-    resource: "@c33sSimpleContentBundle/Controller/ContentPage/"
+C33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentPage:
+    resource: "@C33sSimpleContentBundle/Controller/ContentPage/"
     type:     admingenerator_nested
     prefix:   /content_pages
 
-c33sSimpleContentBundle_admin_c33s_simple_content_bundle_Template:
-    resource: "@c33sSimpleContentBundle/Controller/Template/"
+C33sSimpleContentBundle_admin_c33s_simple_content_bundle_Template:
+    resource: "@C33sSimpleContentBundle/Controller/Template/"
     type:     admingenerator
     prefix:   /templates
 
-c33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentType:
-    resource: "@c33sSimpleContentBundle/Controller/ContentType/"
+C33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentType:
+    resource: "@C33sSimpleContentBundle/Controller/ContentType/"
     type:     admingenerator
     prefix:   /content_types

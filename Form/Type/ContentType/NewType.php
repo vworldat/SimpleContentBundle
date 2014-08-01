@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Form\Type\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\Form\BaseContentTypeType\NewType as BaseNewType;
+use Admingenerated\C33sSimpleContentBundle\Form\BaseContentTypeType\NewType as BaseNewType;
 
 /**
  * NewType

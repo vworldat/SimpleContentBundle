@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Form\Type\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\Form\BaseContentTypeType\FiltersType as BaseFiltersType;
+use Admingenerated\C33sSimpleContentBundle\Form\BaseContentTypeType\FiltersType as BaseFiltersType;
 
 /**
  * FiltersType

@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Controller\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\BaseContentTypeController\ListController as BaseListController;
+use Admingenerated\C33sSimpleContentBundle\BaseContentTypeController\ListController as BaseListController;
 
 /**
  * ListController

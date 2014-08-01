@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Controller\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\BaseContentTypeController\EditController as BaseEditController;
+use Admingenerated\C33sSimpleContentBundle\BaseContentTypeController\EditController as BaseEditController;
 
 /**
  * EditController

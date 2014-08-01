@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Controller\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\BaseContentTypeController\NewController as BaseNewController;
+use Admingenerated\C33sSimpleContentBundle\BaseContentTypeController\NewController as BaseNewController;
 
 /**
  * NewController

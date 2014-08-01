@@ -7,13 +7,13 @@ C33s\SimpleContentBundle\Model\ContentType:
     # These 3 types are implemented by default
     markdown:
         title:          Markdown
-        template_name:  c33sSimpleContentBundle:Renderer:markdown.html.twig
+        template_name:  C33sSimpleContentBundle:Renderer:markdown.html.twig
     html:
         title:          HTML
-        template_name:  c33sSimpleContentBundle:Renderer:html.html.twig
+        template_name:  C33sSimpleContentBundle:Renderer:html.html.twig
     plain_text:
         title:          Plain text
-        template_name:  c33sSimpleContentBundle:Renderer:plain_text.html.twig
+        template_name:  C33sSimpleContentBundle:Renderer:plain_text.html.twig
         
     my_custom_type:
         # Defining your custom content type is just as easy:

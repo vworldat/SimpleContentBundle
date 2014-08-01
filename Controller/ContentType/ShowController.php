@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Controller\ContentType;
 
-use Admingenerated\c33sSimpleContentBundle\BaseContentTypeController\ShowController as BaseShowController;
+use Admingenerated\C33sSimpleContentBundle\BaseContentTypeController\ShowController as BaseShowController;
 
 /**
  * ShowController

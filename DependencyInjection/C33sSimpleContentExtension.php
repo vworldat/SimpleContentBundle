@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class c33sSimpleContentExtension extends Extension
+class C33sSimpleContentExtension extends Extension
 {
     /**
      * {@inheritDoc}

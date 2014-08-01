@@ -2,7 +2,7 @@
 
 namespace C33s\SimpleContentBundle\Form\Type\ContentPage;
 
-use Admingenerated\c33sSimpleContentBundle\Form\BaseContentPageType\EditType as BaseEditType;
+use Admingenerated\C33sSimpleContentBundle\Form\BaseContentPageType\EditType as BaseEditType;
 
 /**
  * EditType
