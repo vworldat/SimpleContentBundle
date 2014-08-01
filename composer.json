@@ -19,6 +19,7 @@
             "C33s\\SimpleContentBundle": ""
         }
     },
+    "target-dir": "C33s/SimpleContentBundle",
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",

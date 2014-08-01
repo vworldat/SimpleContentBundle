@@ -14,6 +14,8 @@ autoload:
     psr-0:
         'C33s\SimpleContentBundle': ''
 
+target-dir: 'C33s/SimpleContentBundle'
+
 minimum-stability: stable
 
 require:
