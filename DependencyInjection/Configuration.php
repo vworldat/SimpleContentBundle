@@ -19,11 +19,12 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('c33s_simple_content');
-        
+
         $rootNode
             ->children()
                 ->scalarNode('default_base_template')
-                    ->info('Base template to extend')
+                    ->info('Base template to extend for full pages')
+                    ->defaultValue(null)
                 ->end()
                 ->scalarNode('default_renderer_template')
                     ->defaultValue('C33sSimpleContentBundle:Renderer:markdown.html.twig')
@@ -31,7 +32,7 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
-        
+
         return $treeBuilder;
     }
 }

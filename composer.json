@@ -15,15 +15,15 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "C33s\\SimpleContentBundle\\": ""
+        "psr-0": {
+            "C33s\\SimpleContentBundle": ""
         }
     },
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",
-        "propel/propel-bundle": ">=1.2.0",
-        "cedriclombardot/admingenerator-generator-bundle": "*"
+        "propel/propel-bundle": "~1.2",
+        "cedriclombardot/admingenerator-generator-bundle": "~1.0"
     },
     "suggest": {
         "c33s/menu-bundle": ">=0.9.*",
