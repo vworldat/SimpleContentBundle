@@ -1,6 +1,6 @@
 <?php
 
-namespace c33s\SimpleContentBundle;
+namespace C33s\SimpleContentBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

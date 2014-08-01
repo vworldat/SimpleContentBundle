@@ -1,12 +1,12 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Menu;
+namespace C33s\SimpleContentBundle\Menu;
 
-use c33s\MenuBundle\Exception\OptionRequiredException;
-use c33s\MenuBundle\Item\MenuItem;
-use c33s\MenuBundle\Menu\Menu;
-use c33s\SimpleContentBundle\Model\ContentPage;
-use c33s\SimpleContentBundle\Service\SimpleContentService;
+use C33s\MenuBundle\Exception\OptionRequiredException;
+use C33s\MenuBundle\Item\MenuItem;
+use C33s\MenuBundle\Menu\Menu;
+use C33s\SimpleContentBundle\Model\ContentPage;
+use C33s\SimpleContentBundle\Service\SimpleContentService;
 
 /**
  * Description of SimpleContentMenuItem

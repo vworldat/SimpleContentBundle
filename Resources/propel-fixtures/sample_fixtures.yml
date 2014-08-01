@@ -3,7 +3,7 @@
 
 # If you need more than one content type in your application (see option "default_renderer_template"),
 # you may specify several of them and choose by page
-c33s\SimpleContentBundle\Model\ContentType:
+C33s\SimpleContentBundle\Model\ContentType:
     # These 3 types are implemented by default
     markdown:
         title:          Markdown
@@ -22,7 +22,7 @@ c33s\SimpleContentBundle\Model\ContentType:
 
 
 # If you want to use more than one base template (see option "default_base_template"), you may specify them like this:
-c33s\SimpleContentBundle\Model\Template:
+C33s\SimpleContentBundle\Model\Template:
     my_base_template1:
         title:          Base Template 1
         template_name:  pathTo::my-base-template.html.twig
@@ -33,7 +33,7 @@ c33s\SimpleContentBundle\Model\Template:
 
 
 # content fixtures can be defined like this
-c33s\SimpleContentBundle\Model\ContentPage:
+C33s\SimpleContentBundle\Model\ContentPage:
     # The first element you save will automatically become the root element and will not be editable.
     # It is recommended to create a dummy page like this:
     root:

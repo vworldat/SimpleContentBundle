@@ -1,6 +1,6 @@
 generator: admingenerator.generator.propel
 params:
-    model: c33s\SimpleContentBundle\Model\Template
+    model: C33s\SimpleContentBundle\Model\Template
     namespace_prefix: c33s
     concurrency_lock: ~
     bundle_name: SimpleContentBundle

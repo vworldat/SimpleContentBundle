@@ -1,8 +1,8 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Controller;
+namespace C33s\SimpleContentBundle\Controller;
 
-use c33s\SimpleContentBundle\Service\SimpleContentService;
+use C33s\SimpleContentBundle\Service\SimpleContentService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class SimpleContentController extends Controller

@@ -15,11 +15,10 @@
         }
     ],
     "autoload": {
-        "psr-0": {
-            "c33s\\SimpleContentBundle": ""
+        "psr-4": {
+            "C33s\\SimpleContentBundle\\": ""
         }
     },
-    "target-dir": "c33s/SimpleContentBundle",
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.3.3",

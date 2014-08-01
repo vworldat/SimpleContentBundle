@@ -1,9 +1,9 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Service;
+namespace C33s\SimpleContentBundle\Service;
 
-use c33s\SimpleContentBundle\Model\ContentPage;
-use c33s\SimpleContentBundle\Model\ContentPageQuery;
+use C33s\SimpleContentBundle\Model\ContentPage;
+use C33s\SimpleContentBundle\Model\ContentPageQuery;
 use Criteria;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

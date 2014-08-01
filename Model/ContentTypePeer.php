@@ -1,8 +1,8 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Model;
+namespace C33s\SimpleContentBundle\Model;
 
-use c33s\SimpleContentBundle\Model\om\BaseContentTypePeer;
+use C33s\SimpleContentBundle\Model\om\BaseContentTypePeer;
 
 class ContentTypePeer extends BaseContentTypePeer
 {

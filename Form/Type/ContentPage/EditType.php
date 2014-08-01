@@ -1,6 +1,6 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Form\Type\ContentPage;
+namespace C33s\SimpleContentBundle\Form\Type\ContentPage;
 
 use Admingenerated\c33sSimpleContentBundle\Form\BaseContentPageType\EditType as BaseEditType;
 

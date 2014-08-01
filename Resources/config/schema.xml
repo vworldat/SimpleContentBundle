@@ -11,7 +11,7 @@
         <parameter name="strip_comments" value="false" />
     </behavior>
     
-    <table name="c33s_simple_content_page" phpName="ContentPage" namespace="c33s\SimpleContentBundle\Model">
+    <table name="c33s_simple_content_page" phpName="ContentPage" namespace="C33s\SimpleContentBundle\Model">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
         
@@ -41,7 +41,7 @@
         </foreign-key>
     </table>
     
-    <table name="c33s_simple_content_type" phpName="ContentType" namespace="c33s\SimpleContentBundle\Model">
+    <table name="c33s_simple_content_type" phpName="ContentType" namespace="C33s\SimpleContentBundle\Model">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
         <behavior name="sluggable" />
@@ -50,7 +50,7 @@
         <column name="template_name" required="true" />
     </table>
     
-    <table name="c33s_simple_template" phpName="Template" namespace="c33s\SimpleContentBundle\Model">
+    <table name="c33s_simple_template" phpName="Template" namespace="C33s\SimpleContentBundle\Model">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />
         <behavior name="sluggable" />

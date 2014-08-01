@@ -1,10 +1,10 @@
 <?php
 
-namespace c33s\SimpleContentBundle\Menu;
+namespace C33s\SimpleContentBundle\Menu;
 
-use c33s\MenuBundle\Menu\Menu;
-use c33s\SimpleContentBundle\Model\ContentPage;
-use c33s\SimpleContentBundle\Model\ContentPageQuery;
+use C33s\MenuBundle\Menu\Menu;
+use C33s\SimpleContentBundle\Model\ContentPage;
+use C33s\SimpleContentBundle\Model\ContentPageQuery;
 use PropelCollection;
 
 /**
@@ -29,7 +29,7 @@ class SimpleContentMenu extends Menu
      */
     protected function getDefaultItemClass()
     {
-        return 'c33s\SimpleContentBundle\Menu\SimpleContentMenuItem';
+        return 'C33s\SimpleContentBundle\Menu\SimpleContentMenuItem';
     }
     
     protected function addContentItems()
