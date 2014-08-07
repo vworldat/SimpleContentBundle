@@ -1,0 +1,75 @@
+generator: admingenerator.generator.propel
+params:
+    model: C33s\SimpleContentBundle\Model\ContentBlock
+    namespace_prefix: C33s
+    concurrency_lock: ~
+    bundle_name: SimpleContentBundle
+    i18n_catalog:   C33sSimpleContent
+    pk_requirement: ~
+    embed_types: []
+    fields:
+        name:
+            label:      Block name
+        type:
+            formType:   choice
+            addFormOptions:
+                required:   true
+                choices:    { line: 'line', text: 'text', markdown: 'markdown', html: 'html' }
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: Content blocks
+            display:
+              - name
+              - type
+              - locale
+              - content
+              - updated_at
+            actions: []
+#                new: ~
+            object_actions:
+                edit: ~
+#                delete: ~
+    filters:
+        params:
+            display:
+              - name
+              - content
+    new:
+        params:
+            title: Add content block
+            display:
+              - name
+              - type
+              - locale
+              - content
+            actions:
+                save-and-list: ~
+                list: ~
+    edit:
+        params:
+            title: "Edit content block \"%name%\" |{ %name%: ContentBlock.name }|"
+            display:
+              - content
+            actions:
+                save-and-list: ~
+                list: ~
+#    show:
+#        params:
+#            #title: "You're viewing the object \"%object%\"|{ %object%: content_page.title }|"
+#            title:  "Content page details"
+#            display: ~
+#            actions:
+#                list: ~
+#                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~
+                

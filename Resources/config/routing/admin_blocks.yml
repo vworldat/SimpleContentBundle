@@ -1,0 +1,4 @@
+C33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentBlock:
+    resource: "@C33sSimpleContentBundle/Controller/ContentBlock/"
+    type:     admingenerator_nested
+    prefix:   /content_blocks

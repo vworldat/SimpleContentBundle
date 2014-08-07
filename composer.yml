@@ -23,8 +23,8 @@ require:
     
     propel/propel-bundle:                               '~1.2'
     cedriclombardot/admingenerator-generator-bundle:    '~1.0'
+    knplabs/knp-markdown-bundle:                        '~1.3'
 
 suggest:
-    c33s/menu-bundle:                                   '>=0.9.*'
-    knplabs/knp-markdown-bundle:                        '>=1.3.0'
+    c33s/menu-bundle:                                   '>=0.9.0'
     

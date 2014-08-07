@@ -12,3 +12,4 @@ C33sSimpleContentBundle_admin_c33s_simple_content_bundle_ContentType:
     resource: "@C33sSimpleContentBundle/Controller/ContentType/"
     type:     admingenerator
     prefix:   /content_types
+

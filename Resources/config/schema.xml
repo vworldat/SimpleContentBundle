@@ -41,6 +41,40 @@
         </foreign-key>
     </table>
     
+    <table name="c33s_simple_content_block" phpName="ContentBlock" namespace="C33s\SimpleContentBundle\Model">
+        <behavior name="auto_add_pk" />
+        <behavior name="timestampable" />
+        <behavior name="archivable">
+            <parameter name="archive_on_insert" value="true" />
+            <parameter name="archive_on_update" value="true" />
+            <parameter name="archive_on_delete" value="true" />
+        </behavior>
+        
+        <!--    
+        <behavior name="c33s_searchable">
+            <parameter name="columns" value="name,content" />
+        </behavior>
+        -->
+        
+        <column name="name" type="VARCHAR" required="true" />
+        <column name="type" type="VARCHAR" required="true" default="text" />
+        <column name="locale" type="VARCHAR" required="false" />
+        <column name="content" type="LONGVARCHAR" required="false" primaryString="true" />
+        
+        <index>
+            <index-column name="name" />
+            <index-column name="type" />
+            <index-column name="locale" />
+        </index>
+        <index>
+            <index-column name="name" />
+            <index-column name="locale" />
+        </index>
+        <index>
+            <index-column name="locale" />
+        </index>
+    </table>
+    
     <table name="c33s_simple_content_type" phpName="ContentType" namespace="C33s\SimpleContentBundle\Model">
         <behavior name="auto_add_pk" />
         <behavior name="timestampable" />

@@ -6,6 +6,8 @@ use C33s\SimpleContentBundle\Model\ContentPage;
 use C33s\SimpleContentBundle\Model\ContentPageQuery;
 use Criteria;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use C33s\SimpleContentBundle\Model\ContentBlock;
+use C33s\SimpleContentBundle\Model\ContentBlockQuery;
 
 /**
  * Description of SimpleContentService
@@ -16,38 +18,37 @@ class SimpleContentService
 {
     /**
      *
-     * @var ContainerInterface
-     */
-    protected $container;
-    
-    /**
-     *
      * @var string
      */
     protected $defaultTemplate;
-    
+
     /**
      *
      * @var string
      */
     protected $defaultRendererTemplate;
-    
+
     /**
      *
      * @var array
      */
     protected $pages = array();
-    
-    public function __construct($defaultTemplate, $defaultRendererTemplate, ContainerInterface $container)
+
+    /**
+     *
+     * @var array
+     */
+    protected $blocks = array();
+
+    public function __construct($defaultTemplate, $defaultRendererTemplate)
     {
         $this->defaultTemplate = $defaultTemplate;
         $this->defaultRendererTemplate = $defaultRendererTemplate;
-        $this->container = $container;
     }
-    
+
     /**
      * Get the template to use for rendering content.
-     * 
+     *
      * @return string
      */
     public function getRendererTemplateForPage(ContentPage $contentPage)
@@ -56,13 +57,13 @@ class SimpleContentService
         {
             return $contentPage->getContentType()->getTemplateName();
         }
-        
+
         return $this->defaultRendererTemplate;
     }
-    
+
     /**
      * Get the template to extend when rendering content.
-     * 
+     *
      * @return string
      */
     public function getTemplateForPage(ContentPage $contentPage)
@@ -71,21 +72,21 @@ class SimpleContentService
         {
             return $contentPage->getTemplate()->getTemplateName();
         }
-        
+
         return $this->defaultTemplate;
     }
-    
+
     /**
      * Fetch a content page by its name
-     * 
+     *
      * @param string $pageName
-     * 
+     *
      * @return ContentPage
      */
     public function fetchPage($pageName)
     {
         $pageName = (string) $pageName;
-        
+
         if (!array_key_exists($pageName, $this->pages))
         {
             if ('' == $pageName)
@@ -106,10 +107,67 @@ class SimpleContentService
                     ->findOne()
                 ;
             }
-            
+
             $this->pages[$pageName] = $page;
         }
-        
+
         return $this->pages[$pageName];
+    }
+
+    /**
+     * Fetch the ContentBlock object with the given name and locale.
+     * If no block with the given parameters exists, it is created
+     * automatically and assigned the given default value.
+     *
+     * @param string $name          Content block name
+     * @param string $type          Content type
+     * @param string $locale        Locale (optional)
+     * @param string $defaultValue  Default value to assign to the block if created
+     *
+     * @return ContentBlock
+     */
+    public function fetchContentBlock($name, $type, $locale = null, $defaultValue = null)
+    {
+        $localeString = (string) $locale;
+        if (!isset($this->blocks[$name][$type][$localeString]))
+        {
+            $this->blocks[$name][$type][$localeString] = $this->getOrCreateContentBlock($name, $type, $locale, $defaultValue);
+        }
+
+        return $this->blocks[$name][$type][$localeString];
+    }
+
+    /**
+     * Load content block from database or create it.
+     *
+     * @param string $name          Content block name
+     * @param string $type          Content type
+     * @param string $locale        Locale (optional)
+     * @param string $defaultValue  Default value to assign to the block if created
+     *
+     * @return ContentBlock
+     */
+    protected function getOrCreateContentBlock($name, $type, $locale = null, $defaultValue = null)
+    {
+        $block = ContentBlockQuery::create()
+            ->filterByName($name)
+            ->filterByType($type)
+            ->filterByLocale($locale)
+            ->findOne()
+        ;
+
+        if (null === $block)
+        {
+            $block = new ContentBlock();
+            $block
+                ->setName($name)
+                ->setLocale($locale)
+                ->setType($type)
+                ->setContent($defaultValue)
+                ->save()
+            ;
+        }
+
+        return $block;
     }
 }
