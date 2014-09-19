@@ -57,6 +57,9 @@ class SimpleContentExtension extends \Twig_Extension
      * Fetch content block with the given default content and name.
      * This allows to wrap existing content with a filter block.
      *
+     * If a locale different from the current locale is given, the block is fetched/created,
+     * but not displayed.
+     *
      * Implemented / allowed types so far:
      *  * line      Single line, escaped (default)
      *  * text      Multiline, escaped
@@ -76,12 +79,21 @@ class SimpleContentExtension extends \Twig_Extension
     {
         if (null === $locale && null !== $this->translator)
         {
-            $locale = $this->translator->getLocale();
+            $fetchLocale = $this->translator->getLocale();
+        }
+        else
+        {
+            $fetchLocale = $locale;
         }
 
-        $block = $this->contentService->fetchContentBlock($name, $type, $locale, $defaultContent);
+        $block = $this->contentService->fetchContentBlock($name, $type, $fetchLocale, $defaultContent);
 
-        return $this->renderContent($block);
+        if (null === $locale || (null !== $this->translator && $this->translator->getLocale() == $locale))
+        {
+            return $this->renderContent($block);
+        }
+
+        return '';
     }
 
     /**

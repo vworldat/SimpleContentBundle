@@ -8,6 +8,7 @@ use Criteria;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use C33s\SimpleContentBundle\Model\ContentBlock;
 use C33s\SimpleContentBundle\Model\ContentBlockQuery;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Description of SimpleContentService
@@ -44,6 +45,26 @@ class SimpleContentService
     {
         $this->defaultTemplate = $defaultTemplate;
         $this->defaultRendererTemplate = $defaultRendererTemplate;
+
+        $this->prefetchBlocks();
+    }
+
+    /**
+     * Fetch all blocks for the given locale in one query to minimize db access.
+     *
+     * @param string $locale
+     */
+    protected function prefetchBlocks()
+    {
+        $allBlocks = ContentBlockQuery::create()
+            ->find()
+        ;
+
+        foreach ($allBlocks as $block)
+        {
+            /* @var $block ContentBlock */
+            $this->blocks[$block->getName()][$block->getLocale()] = $block;
+        }
     }
 
     /**
@@ -129,12 +150,12 @@ class SimpleContentService
     public function fetchContentBlock($name, $type, $locale = null, $defaultValue = null)
     {
         $localeString = (string) $locale;
-        if (!isset($this->blocks[$name][$type][$localeString]))
+        if (!isset($this->blocks[$name][$localeString]))
         {
-            $this->blocks[$name][$type][$localeString] = $this->getOrCreateContentBlock($name, $type, $locale, $defaultValue);
+            $this->blocks[$name][$localeString] = $this->getOrCreateContentBlock($name, $type, $locale, $defaultValue);
         }
 
-        return $this->blocks[$name][$type][$localeString];
+        return $this->blocks[$name][$localeString];
     }
 
     /**
