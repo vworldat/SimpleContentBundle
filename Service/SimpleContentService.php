@@ -4,11 +4,9 @@ namespace C33s\SimpleContentBundle\Service;
 
 use C33s\SimpleContentBundle\Model\ContentPage;
 use C33s\SimpleContentBundle\Model\ContentPageQuery;
-use Criteria;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use C33s\SimpleContentBundle\Model\ContentBlock;
 use C33s\SimpleContentBundle\Model\ContentBlockQuery;
-use Symfony\Component\Translation\TranslatorInterface;
+use Criteria;
 
 /**
  * Description of SimpleContentService
@@ -39,31 +37,32 @@ class SimpleContentService
      *
      * @var array
      */
-    protected $blocks = array();
+    protected $blocks;
 
     public function __construct($defaultTemplate, $defaultRendererTemplate)
     {
         $this->defaultTemplate = $defaultTemplate;
         $this->defaultRendererTemplate = $defaultRendererTemplate;
-
-        $this->prefetchBlocks();
     }
 
     /**
-     * Fetch all blocks for the given locale in one query to minimize db access.
-     *
-     * @param string $locale
+     * Fetch all blocks in one query to minimize db access.
      */
-    protected function prefetchBlocks()
+    protected function fetchBlocks()
     {
-        $allBlocks = ContentBlockQuery::create()
-            ->find()
-        ;
-
-        foreach ($allBlocks as $block)
+        if (null === $this->blocks)
         {
-            /* @var $block ContentBlock */
-            $this->blocks[$block->getName()][$block->getLocale()] = $block;
+            $this->blocks = array();
+
+            $allBlocks = ContentBlockQuery::create()
+                ->find()
+            ;
+
+            foreach ($allBlocks as $block)
+            {
+                /* @var $block ContentBlock */
+                $this->blocks[$block->getName()][$block->getLocale()] = $block;
+            }
         }
     }
 
@@ -149,6 +148,8 @@ class SimpleContentService
      */
     public function fetchContentBlock($name, $type, $locale = null, $defaultValue = null)
     {
+        $this->fetchBlocks();
+
         $localeString = (string) $locale;
         if (!isset($this->blocks[$name][$localeString]))
         {
