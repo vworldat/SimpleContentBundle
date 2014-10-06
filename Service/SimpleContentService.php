@@ -39,10 +39,19 @@ class SimpleContentService
      */
     protected $blocks;
 
-    public function __construct($defaultTemplate, $defaultRendererTemplate)
+    /**
+     * Project locales
+     *
+     * @var array
+     */
+    protected $locales;
+
+    public function __construct($defaultTemplate, $defaultRendererTemplate, $locales)
     {
         $this->defaultTemplate = $defaultTemplate;
         $this->defaultRendererTemplate = $defaultRendererTemplate;
+
+        $this->locales = (array) $locales;
     }
 
     /**
@@ -139,17 +148,42 @@ class SimpleContentService
      * If no block with the given parameters exists, it is created
      * automatically and assigned the given default value.
      *
-     * @param string $name          Content block name
-     * @param string $type          Content type
-     * @param string $locale        Locale (optional)
-     * @param string $defaultValue  Default value to assign to the block if created
+     * If the content is empty and localeFallback is true, the system locales (from parameter %locales%) will
+     * be walked through in reverse order, starting from the given locale, until a non-empty content is found.
+     *
+     * @param string $name              Content block name
+     * @param string $type              Content type
+     * @param string $locale            Locale (optional)
+     * @param string $defaultValue      Default value to assign to the block if created
+     * @param boolean $localeFallback   If set to true, empty content will be replaced with another locales content
+     *                                  in fallback order (reverse %locales%) if available
      *
      * @return ContentBlock
      */
-    public function fetchContentBlock($name, $type, $locale = null, $defaultValue = null)
+    public function fetchContentBlock($name, $type, $locale = null, $defaultValue = null, $localeFallback = false)
     {
         $this->fetchBlocks();
 
+        $block = $this->doFetchContentBlock($name, $type, $locale, $defaultValue);
+
+        if ('' == $block->getContent() && $localeFallback)
+        {
+            // search for position of given locale in locales list
+            $key = array_search($locale, $this->locales);
+
+            if (false === $key || null === $key || !isset($this->locales[$key - 1]))
+            {
+                return $block;
+            }
+
+            return $this->fetchContentBlock($name, $type, $this->locales[$key - 1], $defaultValue, $localeFallback);
+        }
+
+        return $block;
+    }
+
+    protected function doFetchContentBlock($name, $type, $locale = null, $defaultValue = null)
+    {
         $localeString = (string) $locale;
         if (!isset($this->blocks[$name][$localeString]))
         {

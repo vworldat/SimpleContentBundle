@@ -13,6 +13,7 @@
         <service id="c33s_simple_content" class="%c33s_simple_content.class%">
             <argument>%c33s_simple_content.default_base_template%</argument>
             <argument>%c33s_simple_content.default_renderer_template%</argument>
+            <argument>%locales%</argument>
         </service>
 
         <service id="c33s_simple_content.twig.extension" class="%c33s_simple_content.twig.extension.class%">
