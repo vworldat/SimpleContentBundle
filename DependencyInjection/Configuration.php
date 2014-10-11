@@ -21,14 +21,19 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('c33s_simple_content');
 
         $rootNode
+            ->addDefaultsIfNotSet()
             ->children()
                 ->scalarNode('default_base_template')
-                    ->info('Base template to extend for full pages')
                     ->defaultValue(null)
+                    ->info('Base template to extend for full pages')
                 ->end()
                 ->scalarNode('default_renderer_template')
                     ->defaultValue('C33sSimpleContentBundle:Renderer:markdown.html.twig')
                     ->info('Template to use for rendering/filtering content')
+                ->end()
+                ->booleanNode('use_locale_fallback')
+                    ->defaultValue(false)
+                    ->info('Set to true to use content block locale fallback by default.')
                 ->end()
             ->end()
         ;

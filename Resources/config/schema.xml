@@ -63,16 +63,18 @@
         
         <index>
             <index-column name="name" />
-            <index-column name="type" />
+            <index-column name="locale" />
+        </index>
+        <index>
             <index-column name="locale" />
         </index>
         <index>
             <index-column name="name" />
-            <index-column name="locale" />
         </index>
-        <index>
-            <index-column name="locale" />
-        </index>
+        <unique>
+            <unique-column name="name" />
+            <unique-column name="locale" />
+        </unique>
     </table>
     
     <table name="c33s_simple_content_type" phpName="ContentType" namespace="C33s\SimpleContentBundle\Model">
