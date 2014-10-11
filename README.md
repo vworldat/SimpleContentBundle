@@ -69,8 +69,7 @@ Usage
 
 Use the twig filters delivered with this bundle to automatically add content from your templates.
 
-```jinja+html
-
+``` jinja+html
 {# Just wrap your text inside the filter #}
 <h1>{% filter c33s_content_line('home.title') %}Welcome to my website{% endfilter %}</h1>
 
