@@ -60,6 +60,19 @@ class SimpleContentExtension extends \Twig_Extension
     }
 
     /**
+     * Returns a list of functions to add to the existing list.
+     *
+     * @return array An array of functions
+     */
+    public function getFunctions()
+    {
+        return array(
+            new \Twig_SimpleFunction('c33s_content_block_exists', array($this->contentService, 'hasContentBlock')),
+            new \Twig_SimpleFunction('c33s_content_block_missing_locales', array($this->contentService, 'getMissingLocalesForBlockName')),
+        );
+    }
+
+    /**
      * Fetch content block with the given default content and name.
      * This allows to wrap existing content with a filter block.
      *

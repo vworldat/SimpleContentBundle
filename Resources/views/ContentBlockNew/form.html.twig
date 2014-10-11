@@ -1,1 +1,10 @@
 {% extends_admingenerated "C33sSimpleContentBundle:ContentBlockNew:form.html.twig" %}
+
+{% block form_buttons %}
+
+<input type="hidden" name="copy_name" value="{{ existingBlock.name }}" />
+<input type="hidden" name="copy_locale" value="{{ existingBlock.locale }}" />
+<input type="hidden" name="new_locale" value="{{ ContentBlock.locale }}" />
+
+{{ parent() }}
+{% endblock %}

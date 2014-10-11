@@ -287,6 +287,27 @@ class SimpleContentService
     }
 
     /**
+     * Get all locales for the given block that have not been saved yet.
+     *
+     * @param string $name
+     *
+     * @return array
+     */
+    public function getMissingLocalesForBlockName($name)
+    {
+        $locales = array();
+        foreach ($this->locales as $locale)
+        {
+            if (!$this->hasContentBlock($name, $locale))
+            {
+                $locales[$locale] = $locale;
+            }
+        }
+
+        return $locales;
+    }
+
+    /**
      * Create content block in database.
      *
      * @param string $name      Content block name

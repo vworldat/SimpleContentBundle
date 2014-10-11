@@ -10,11 +10,16 @@ params:
     fields:
         name:
             label:      Block name
+            addFormOptions:
+                disabled:   true
         type:
             formType:   choice
             addFormOptions:
-                required:   true
                 choices:    { line: 'line', text: 'text', markdown: 'markdown', html: 'html' }
+                disabled:   true
+        locale:
+            addFormOptions:
+                disabled:   true
     object_actions:
         delete: ~
     batch_actions:

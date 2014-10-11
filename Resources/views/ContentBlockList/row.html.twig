@@ -1,1 +1,7 @@
 {% extends_admingenerated "C33sSimpleContentBundle:ContentBlockList:row.html.twig" %}
+
+{% block object_actions_customActions %}
+    {% for loc in c33s_content_block_missing_locales(ContentBlock.name) %}
+        <a class="btn btn-default btn-xs" href="{{ path("C33s_SimpleContentBundle_ContentBlock_new", { 'copy_name': ContentBlock.name, 'copy_locale': ContentBlock.locale, 'new_locale': loc }) }}"><i class="fa fa-plus"></i> {{ loc|upper }}</a>
+    {% endfor %}
+{% endblock object_actions_customActions %}
