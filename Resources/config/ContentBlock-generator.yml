@@ -44,6 +44,11 @@ builders:
             display:
               - name
               - content
+            
+            fields:
+                name:
+                    addFormOptions:
+                        disabled:   false
     new:
         params:
             title: Add content block
