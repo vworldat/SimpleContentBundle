@@ -21,4 +21,9 @@ class ContentBlock extends BaseContentBlock
 
         return parent::setContent($v);
     }
+
+    public function getLoggableObjectName()
+    {
+        return $this->getName() . '.' . $this->getLocale();
+    }
 }
