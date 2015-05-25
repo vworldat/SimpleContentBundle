@@ -4,7 +4,7 @@ namespace C33s\SimpleContentBundle\BuildingBlock;
 
 use C33s\ConstructionKitBundle\BuildingBlock\SimpleBuildingBlock;
 
-class SimpleContentBlock extends SimpleBuildingBlock
+class SimpleContentBuildingBlock extends SimpleBuildingBlock
 {
     /**
      * Return true if this block should be installed automatically as soon as it is registered (e.g. using composer).
