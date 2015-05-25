@@ -1,0 +1,11 @@
+c33s_simple_content:
+    # Set to true for automatic locale fallback
+    use_locale_fallback:        false
+
+    # These settings are used for full pages only
+    
+    # Base template to extend for full pages
+    #default_base_template:
+    
+    # Template to use for rendering/filtering content
+    #default_renderer_template:  C33sSimpleContentBundle:Renderer:markdown.html.twig

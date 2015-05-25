@@ -29,5 +29,10 @@
     "suggest": {
         "c33s/menu-bundle": ">=0.9.0",
         "cedriclombardot/admingenerator-generator-bundle": "~1.0"
+    },
+    "extra": {
+        "c33s-building-blocks": [
+            "C33s\\SimpleContentBundle\\BuildingBlock\\SimpleContentBuildingBlock"
+        ]
     }
 }
